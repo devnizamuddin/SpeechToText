@@ -44,8 +44,10 @@ public class MainActivity extends AppCompatActivity {
 
         //starting getting voice intent.
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        //from where you want to search
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
                 RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        //language from your device
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
         //show to user
         intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Hi I am speaking...");
@@ -68,11 +70,12 @@ public class MainActivity extends AppCompatActivity {
 
             //getting string from voice.
             ArrayList<String> results = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+            //showing to user
             text_tv.setText(results.get(0));
         }
         else {
             Toast.makeText(this, "Something error..", Toast.LENGTH_SHORT).show();
         }
-        
+
     }
 }
